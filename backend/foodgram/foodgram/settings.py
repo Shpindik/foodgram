@@ -9,11 +9,15 @@ DOTENV_PATH = BASE_DIR.parent.parent / '.env'
 load_dotenv(DOTENV_PATH)
 
 SECRET_KEY = os.getenv('SECRET_KEY', 'DEFAULT_SECRET_KEY')
+
 DEBUG = os.getenv('DEBUG') == 'True'
+
 ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', 'localhost,127.0.0.1').split(',')
+
 CSRF_TRUSTED_ORIGINS = os.getenv(
     'CSRF_TRUSTED_ORIGINS', 'http://localhost:8001,http://127.0.0.1:8001'
 ).split(',')
+
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -27,6 +31,7 @@ INSTALLED_APPS = [
     'django_filters',
     'app.apps.AppConfig',
 ]
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -36,7 +41,9 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
 ROOT_URLCONF = 'foodgram.urls'
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -52,7 +59,9 @@ TEMPLATES = [
         },
     },
 ]
+
 WSGI_APPLICATION = 'foodgram.wsgi.application'
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
@@ -63,7 +72,9 @@ DATABASES = {
         'PORT': os.getenv('DB_PORT', 5432)
     }
 }
+
 AUTH_USER_MODEL = 'app.FoodgramUser'
+
 AUTH_PASSWORD_VALIDATORS = [
     {'NAME': 'django.contrib.auth.password_validation' '.UserAttributeSimilarityValidator', },
     {'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator', },
@@ -112,3 +123,11 @@ DJOSER = {
         'current_user': 'app.serializers.FoodgramUserSerializer',
     },
 }
+
+SESSION_COOKIE_SECURE = True
+
+CSRF_COOKIE_SECURE = True
+
+SESSION_COOKIE_SAMESITE = 'Lax'
+
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
