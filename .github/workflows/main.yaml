@@ -107,8 +107,7 @@ jobs:
             sudo docker compose -f docker-compose.prod.yaml pull
             sudo docker compose -f docker-compose.prod.yaml up -d
             sudo docker compose -f docker-compose.prod.yaml exec backend python manage.py migrate
-            sudo docker compose -f docker-compose.prod.yaml exec backend python manage.py collectstatic
-            sudo docker compose -f docker-compose.production.yml exec backend cp -r /app/collected_static/. /static/static
+            sudo docker compose -f docker-compose.prod.yaml exec backend python manage.py collectstatic --no-input
             sudo docker system prune -af
   send_telegram_message:
     runs-on: ubuntu-latest
