@@ -8,15 +8,15 @@ DOTENV_PATH = BASE_DIR.parent.parent / '.env'
 
 load_dotenv(DOTENV_PATH)
 
-SECRET_KEY = os.getenv('SECRET_KEY', 'DEFAULT_SECRET_KEY')
+SECRET_KEY = os.getenv('SECRET_KEY', 'default-secret-key')
 
-DEBUG = os.getenv('DEBUG') == 'True'
+DEBUG = os.getenv('DEBUG', 'false').lower() == 'true'
 
 ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', 'localhost,127.0.0.1').split(',')
 
 CSRF_TRUSTED_ORIGINS = os.getenv(
-    'CSRF_TRUSTED_ORIGINS', 'http://localhost:8001,http://127.0.0.1:8001'
-).split(',')
+    'CSRF_TRUSTED_ORIGINS',
+    'http://localhost:8001,http://127.0.0.1:8001').split(',')
 
 INSTALLED_APPS = [
     'django.contrib.admin',
