@@ -30,6 +30,7 @@ INSTALLED_APPS = [
     'djoser',
     'django_filters',
     'app.apps.AppConfig',
+    'api.apps.ApiConfig',
 ]
 
 MIDDLEWARE = [
@@ -119,8 +120,8 @@ DJOSER = {
     'LOGIN_FIELD': 'email',
     'HIDE_USERS': False,
     'SERIALIZERS': {
-        'user': 'app.serializers.FoodgramUserSerializer',
-        'current_user': 'app.serializers.FoodgramUserSerializer',
+        'user': 'api.serializers.FoodgramUserSerializer',
+        'current_user': 'api.serializers.FoodgramUserSerializer',
     },
 }
 
